@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" style="height: 100%; width: 100%;">
+
+<head>
+	<meta charset="utf-8">
+	<title>Search Home</title>
+	<style type="text/css">
+		body {
+			text-align: center;
+			font-style: normal;
+		}
+	</style>
+</head>
+	<body>
+        <!-- <div id="whole" @click="unalert()">
+	<caption>
+		<div class="dropdown">
+			<div>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					<li role="presentation" v-for="(item,index) in xiala_rmam" :key="index" >
+						<a @click="yuanliaocesuan(item.id)">{[{item.name}]}</a>
+					</li>
+				</ul>
+			<div>
+				<button id="jisuan"><a @click.stop="zidongpeikuang()">自动配矿</a></button>
+			</div>
+		</div>
+		</caption>
+
+		<script type="application/javascript" src="{% static 'js/sjcb.js' %}"></script> -->
+		<div>
+			<h1>今天吃什么</h1>
+		</div>
+		<!-- <div>
+			{% for line in data %}
+			<p>{{ line }}</p>
+			{% endfor %}
+		</div> -->
+		<div>
+			<p>{{ next_meal }}</p>
+		</div>
+		<div>
+			<form action="/next_meal/" method="POST">
+			<!-- {% csrf_token %} -->
+			<!-- 这个必须添加，否则访问时报403错误 -->
+			<input type="submit" value="今天吃什么？">
+		</div>
+	</body>
+</html>
