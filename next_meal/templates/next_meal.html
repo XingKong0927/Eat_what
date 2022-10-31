@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Search Home</title>
+	<title>今天吃什么</title>
 	<style type="text/css">
 		body {
 			text-align: center;
@@ -26,8 +26,6 @@
 			</div>
 		</div>
 		</caption>
-
-		<script type="application/javascript" src="{% static 'js/sjcb.js' %}"></script> -->
 		<div>
 			<h1>今天吃什么</h1>
 		</div>
@@ -40,8 +38,13 @@
 			<p>{{ next_meal }}</p>
 		</div>
 		<div>
-			<form action="/next_meal/" method="POST">
-			<!-- {% csrf_token %} -->
+		{% if next_meal_picture != 0 %}
+			<img src="../static/Picture/{{ next_meal_picture }}.jpeg" height="35" alt="JSOFT Admin" style="width: 100px;height: 60px;bottom: 0;" />
+		{% endif %}
+		</div>
+		<div>
+			<form action="/next_meal/run" method="POST">
+			{% csrf_token %}
 			<!-- 这个必须添加，否则访问时报403错误 -->
 			<input type="submit" value="今天吃什么？">
 		</div>
