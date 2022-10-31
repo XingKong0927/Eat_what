@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" style="height: 100%; width: 100%;">
+
+<head>
+	<meta charset="utf-8">
+	<title>食物录入</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<style type="text/css">
+		body {
+			text-align: center;
+			font-style: normal;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>食物录入</h1>
+	</div>
+	<div>
+	<form action="/next_meal/enter" enctype='multipart/form-data' method="post">
+		{% csrf_token %}
+		<label for="menu_name">美食名称：</label>
+        <input type="menu_name" name="menu_name" id="menu_name"></td>
+		<p>选择图片：<input type="file" name="pic"></p>
+		<p><input type="submit" value="上传食物"></p>
+	</form>
+	</div>
+</body>
+</html>

@@ -2,8 +2,6 @@ from django.shortcuts import render
 from eat_what.models import menus, run_log
 import pandas as pd
 
-# Create your views here.
-
 def dtf(data_list):
     """数据库数据转为dataframe，decimal转float
     """
@@ -47,8 +45,32 @@ def next_meal(request):
 
     return render(request, "next_meal.html", locals())
 
+def enter_meal(request):
+    """食物录入"""
+    if request.method == 'GET':
+        return render(request, "enter_meal.html")
+    else:
+        # 获取一个文件管理器对象
+        file = request.FILES['pic']
+
+        # q2_text = request.POST.get('q1_text', '默认查询')
+        # 保存文件
+        menu_name = request.POST.get('menu_name')
+        # 将要保存的地址和文件名称
+        where = 'eat_what/static/Picture/{}.jpg'.format(menu_name)
+        # 分块保存image
+        content = file.chunks()
+        with open(where, 'wb') as f:
+            for i in content:
+                f.write(i)
+        print("menu_name: ", menu_name)
+
+        # # 上传文件名称到数据库
+        # menus.objects.filter(name='trent').update(avatar=menu_name)
+        # 返回的httpresponse
+        return render(request, "enter_meal.html")
+
 """
-    q2_text = request.POST.get('q1_text', '默认查询')
     q2_mode = request.POST.get('q1_mode', '默认方式')
 
     model = models_dic[q2_mode]
