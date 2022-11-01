@@ -20,10 +20,25 @@
 	<form action="/next_meal/enter" enctype='multipart/form-data' method="post">
 		{% csrf_token %}
 		<label for="menu_name">美食名称：</label>
-        <input type="menu_name" name="menu_name" id="menu_name"></td>
-		<p>选择图片：<input type="file" name="pic"></p>
+        <input type="menu_name" name="menu_name" id="menu_name"></td><br/>
+		<label for="menu_place">美食地点：</label>
+        <input type="menu_place" name="menu_place" id="menu_place"></td><br/>
+		<label for="menu_price">美食价格：</label>
+        <input type="menu_price" name="menu_price" id="menu_price"></td><br/>
+		<p>美食照片：<input type="file" name="pic"></p>
 		<p><input type="submit" value="上传食物"></p>
 	</form>
+	</div>
+	<div>
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	</div>
+	<div>
+		<form action="/next_meal/home" method="GET">
+		{% csrf_token %}
+		<!-- 这个必须添加，否则访问时报403错误 -->
+		<input type="submit" value="今天吃什么？">
 	</div>
 </body>
 </html>

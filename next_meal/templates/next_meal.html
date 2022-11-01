@@ -44,7 +44,7 @@
 		{% endif %}
 		</div>
 		<div>
-			<form action="/next_meal/run" method="POST">
+			<form action="/next_meal/home" method="POST">
 			{% csrf_token %}
 			<!-- 这个必须添加，否则访问时报403错误 -->
 			<input type="submit" value="今天吃什么？">
