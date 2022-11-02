@@ -1,40 +1,42 @@
 <!doctype html>
-<html lang="en" style="height: 100%; width: 100%;">
-
-<head>
-	<meta charset="utf-8">
-	<title>食物录入</title>
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'css/enter_meal.css' %}">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-</head>
-<body>
-	<div>
-		<h1>食物录入</h1>
-	</div>
-	<div class="food-entry">
-	<form action="/next_meal/enter" enctype='multipart/form-data' method="post">
-		{% csrf_token %}
-		<span style="color:red">*</span><label for="menu_name">美食名称：</label>
-        <input type="menu_name" name="menu_name" id="menu_name" required="required"><br/>
-		<span style="color:red">*</span><label for="menu_place">美食地点：</label>
-        <input type="menu_place" name="menu_place" id="menu_place" required="required"><br/>
-		<span style="color:red">*</span><label for="menu_price">美食价格：</label>
-        <input type="menu_price" name="menu_price" id="menu_price" required="required"><br/><br/>
-		<span style="color:red">*</span>美食照片：<input type="file" class="custom-file-input" ame="pic" accept="image/*" required="required"><br/><br/>
-		<button type="submit" class="button1">上传食物</button><br/><br/>
-	</form>
-	</div>
-	<div>
-		{% for message in messages %}
-			{{ message }}
-		{% endfor %}
-	</div>
-	<div>
-		<form action="/next_meal/home" method="GET">
-		{% csrf_token %}
-		<!-- 这个必须添加，否则访问时报403错误 -->
-		<input type="submit" value="今天吃什么？">
-	</div>
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>食物录入</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/enter_meal.css' %}">
+		<script src="{% static 'js/enter_meal.js' %}"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	</head>
+	<body>
+		<div>
+			<h1>食物录入</h1>
+		</div>
+		<div class="food-entry" name="food-entry">
+		<form name="form1" action="/next_meal/enter" enctype='multipart/form-data' method="post">
+			{% csrf_token %}
+			<span style="color:red">*</span><label for="menu_name">美食名称：</label>
+			<input type="menu_name" name="menu_name" id="menu_name" required="required"><br/>
+			<span style="color:red">*</span><label for="menu_place">美食地点：</label>
+			<input type="menu_place" name="menu_place" id="menu_place" required="required"><br/>
+			<span style="color:red">*</span><label for="menu_price">美食价格：</label>
+			<input type="menu_price" name="menu_price" id="menu_price" required="required"><br/><br/>
+			<span style="color:red">*</span><label for="menu_picture">美食照片：</label>
+			<input type="file" class="custom-file-input" ame="pic" accept="image/*" required="required" name="picpath" id="picpath" style="display:none;" onChange=copyText()>
+			<input type="button" value="上传照片" onclick="document.getElementById('picpath').click();">
+			<input name="path" id="path" style="border-style: none;" value="请选择照片" readonly onfocus=this.blur()><br/><br/>
+			<button type="submit" class="button1">上传美食</button><br/><br/>
+		</form>
+		</div>
+		<div>
+			{% for message in messages %}
+				{{ message }}
+			{% endfor %}
+		</div>
+		<div>
+			<form action="/next_meal/home" method="GET">
+			{% csrf_token %}<!-- 这个必须添加，否则访问时报403错误 -->
+			<input type="submit" value="今天吃什么？">
+		</div>
+	</body>
 </html>

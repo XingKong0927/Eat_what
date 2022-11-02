@@ -26,12 +26,16 @@ def random_selection(a):
 
 def next_meal(request):
     """今天吃什么"""
+    menus_df = dtf(menus.objects.all().values())
     if request.method == 'GET':
         next_meal = '猜猜今天吃什么？'
         next_meal_picture = 0
-        return render(request, "next_meal.html", locals())
     else:
+        dining_places = request.POST.getlist('dining_places')
         menus_df = dtf(menus.objects.all().values())
+
+        menus_df = menus_df.loc[menus_df["place"]==dining_places]
+        print("menus_df: ", menus_df)
         random_selection_index = random_selection(len(menus_df)-1)      # 随机选择index
 
         next_meal = menus_df.loc[random_selection_index, 'menu']
@@ -43,7 +47,8 @@ def next_meal(request):
 
         # run_log_df = dtf(run_log.objects.all().values())
 
-        return render(request, "next_meal.html", locals())
+    dining_place_list = list(menus_df['place'])     # 就餐地点罗列
+    return render(request, "next_meal.html", locals())
 
 def enter_meal(request):
     """食物录入"""
