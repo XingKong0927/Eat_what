@@ -4,29 +4,25 @@
 <head>
 	<meta charset="utf-8">
 	<title>食物录入</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/enter_meal.css' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<style type="text/css">
-		body {
-			text-align: center;
-			font-style: normal;
-		}
-	</style>
 </head>
 <body>
 	<div>
 		<h1>食物录入</h1>
 	</div>
-	<div>
+	<div class="food-entry">
 	<form action="/next_meal/enter" enctype='multipart/form-data' method="post">
 		{% csrf_token %}
-		<label for="menu_name">美食名称：</label>
-        <input type="menu_name" name="menu_name" id="menu_name"></td><br/>
-		<label for="menu_place">美食地点：</label>
-        <input type="menu_place" name="menu_place" id="menu_place"></td><br/>
-		<label for="menu_price">美食价格：</label>
-        <input type="menu_price" name="menu_price" id="menu_price"></td><br/>
-		<p>美食照片：<input type="file" name="pic"></p>
-		<p><input type="submit" value="上传食物"></p>
+		<span style="color:red">*</span><label for="menu_name">美食名称：</label>
+        <input type="menu_name" name="menu_name" id="menu_name" required="required"><br/>
+		<span style="color:red">*</span><label for="menu_place">美食地点：</label>
+        <input type="menu_place" name="menu_place" id="menu_place" required="required"><br/>
+		<span style="color:red">*</span><label for="menu_price">美食价格：</label>
+        <input type="menu_price" name="menu_price" id="menu_price" required="required"><br/><br/>
+		<span style="color:red">*</span>美食照片：<input type="file" class="custom-file-input" ame="pic" accept="image/*" required="required"><br/><br/>
+		<button type="submit" class="button1">上传食物</button><br/><br/>
 	</form>
 	</div>
 	<div>

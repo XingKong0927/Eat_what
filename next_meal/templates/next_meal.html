@@ -1,53 +1,28 @@
 <!doctype html>
-<html lang="en" style="height: 100%; width: 100%;">
-
-<head>
-	<meta charset="utf-8">
-	<title>今天吃什么</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<style type="text/css">
-		body {
-			text-align: center;
-			font-style: normal;
-		}
-	</style>
-</head>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>今天吃什么</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/next_meal.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	</head>
 	<body>
-        <!-- <div id="whole" @click="unalert()">
-	<caption>
-		<div class="dropdown">
+		<div id="whole">
 			<div>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-					<li role="presentation" v-for="(item,index) in xiala_rmam" :key="index" >
-						<a @click="yuanliaocesuan(item.id)">{[{item.name}]}</a>
-					</li>
-				</ul>
-			<div>
-				<button id="jisuan"><a @click.stop="zidongpeikuang()">自动配矿</a></button>
+				<p>{{ next_meal }}</p>
 			</div>
-		</div>
-		</caption>
-		<div>
-			<h1>今天吃什么</h1>
-		</div>
-		<!-- <div>
-			{% for line in data %}
-			<p>{{ line }}</p>
-			{% endfor %}
-		</div> -->
-		<div>
-			<p>{{ next_meal }}</p>
-		</div>
-		<div>
-		{% if next_meal_picture != 0 %}
-			<img src="../static/Picture/{{ next_meal_picture }}.jpg" height="35" alt="JSOFT Admin" style="width: 100px;height: 60px;bottom: 0;" />
-		{% endif %}
-		</div>
-		<div>
-			<form action="/next_meal/home" method="POST">
-			{% csrf_token %}
-			<!-- 这个必须添加，否则访问时报403错误 -->
-			<input type="submit" value="今天吃什么？">
+			<div class="img_wrap">
+			{% if next_meal_picture != 0 %}
+				<img src="../static/Picture/{{ next_meal_picture }}.jpg" alt="delicious food picture"/>
+			{% endif %}
+			</div>
+			<div class="btn_wrap">
+				<form action="/next_meal/home" method="POST">
+				{% csrf_token %}
+				<!-- 这个必须添加，否则访问时报403错误 -->
+				<button class="button1">今天吃什么？</button>
+			</div>
 		</div>
 	</body>
 </html>

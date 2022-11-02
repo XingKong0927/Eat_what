@@ -58,7 +58,7 @@ def enter_meal(request):
 
         if(menu_name in menus_list):                    # 查重：名称为字符串
             messages.error(request, '美食【{}】已存在，录入失败'.format(menu_name))
-        elif(menu_name == i for i in menus_list):       # 查重：名称为数字
+        if(True in [menu_name == i for i in menus_list]):       # 查重：名称为数字
             messages.error(request, '美食【{}】已存在，录入失败'.format(menu_name))
         else:
             login_user = str(request.user)
@@ -77,5 +77,5 @@ def enter_meal(request):
             menus.objects.create(menu=menu_name, place=menu_place, upload_user=login_user, picture=menu_name, price=menu_price)       # 录入到数据库
             messages.success(request, '美食【{}】录入成功'.format(menu_name))
         menus_df = dtf(menus.objects.all().values())
-        # print("menus_df: \n", menus_df)
+        print("menus_df: \n", menus_df)
         return render(request, "enter_meal.html")

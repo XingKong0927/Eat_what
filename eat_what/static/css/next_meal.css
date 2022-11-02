@@ -1,0 +1,39 @@
+/* 
+id标识为'#'，eg：'#whole'
+class标识为'.'，eg：'.img_wrap'
+一般可直接使用，eg：'body', 'img'
+*/
+
+body {
+    text-align: center;
+    font-style: normal;
+}
+
+#whole>.img_wrap{
+	display         :   flex;
+    justify-content :   center;
+    align-items     :   center;
+    object-fit      :   contain;
+    /* max-width       :   100px; */
+    max-width       :   100%;
+}
+#whole>.img_wrap>img{
+    width       :300px;
+    height      :auto;
+    max-width   :50%;
+    max-height  :50%;
+}
+
+#whole>.btn_wrap{
+    margin: 20px auto;
+    width: 110px;
+    height: 45px;
+    /* background: #cad84b; */
+}
+#whole>.btn_wrap>form>button{
+    width: 100px;
+    height:35px;
+    border-radius:40px;     /* 圆弧 */
+    border-style:none;      /* 无边框 */
+    background: #2ce0e0;
+}
