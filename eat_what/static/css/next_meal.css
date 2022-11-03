@@ -9,7 +9,7 @@ body {
     font-style: normal;
 }
 
-#whole>.img_wrap{
+#whole>.img_txt_wrap>.img_wrap{
 	display         :   flex;
     justify-content :   center;
     align-items     :   center;
@@ -17,18 +17,17 @@ body {
     /* max-width       :   100px; */
     max-width       :   100%;
 }
-#whole>.img_wrap>img{
+#whole>.img_txt_wrap>.img_wrap>img{
     width       :300px;
     height      :auto;
-    max-width   :50%;
-    max-height  :50%;
+    max-width   :66%;
+    max-height  :66%;
 }
 
-#whole>.btn_wrap{
-    margin: 20px auto;
-    width: 110px;
-    height: 45px;
-    /* background: #cad84b; */
+#whole>.btn_wrap>form>.place_wrap{
+    margin      :0 auto;
+    width       :300px;
+    height      :auto;
 }
 #whole>.btn_wrap>form>button{
     width: 100px;

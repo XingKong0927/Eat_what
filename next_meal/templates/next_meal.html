@@ -12,18 +12,26 @@
 			<div>
 				<h1>{{ next_meal }}</h1>
 			</div>
-			<div class="img_wrap">
-			{% if next_meal_picture != 0 %}
-				<img src="../static/Picture/{{ next_meal_picture }}.jpg" alt="delicious food picture"/>
-			{% endif %}
+			<div class="img_txt_wrap">
+				{% if next_meal_picture != 0 %}
+					<div class="img_wrap">
+						<img src="../static/Picture/{{ next_meal_picture }}.jpg" alt="delicious food picture"/><br/>
+					</div>
+					<div class="txt_wrap">
+						<p>去{{ next_meal_place }}吃{{ next_meal }}吧！</p>
+						<p><small>{{ next_meal_upload_user }}在{{ next_meal_upload_time }}提供的价格为{{ next_meal_price }}元</small></p>
+					</div>
+				{% endif %}
 			</div>
 			<div class="btn_wrap">
 				<form action="/next_meal/home" enctype='multipart/form-data' method="post">
 					{% if dining_place_list %}
-						<label for="dining_places">就餐地点（多选）：</label>
+						<label for="dining_places"><p>就餐地点（多选）：</p></label>
+						<div class="place_wrap">
 							{% for dining_place in dining_place_list %}
 								<p><input type="checkbox" name="dining_places" value={{ dining_place }}>{{ dining_place }}</p>
 							{% endfor %}
+						</div>
 						{% csrf_token %}<!-- 这个必须添加，否则访问时报403错误 -->
 						<button class="button1">今天吃什么？</button>
 					{% else %}
