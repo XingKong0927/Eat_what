@@ -6,6 +6,9 @@ bin-release/
 
 # Other files and folders
 .settings/
+eat_what/static/Picture/
+next_meal/__pycache__/
+Eatwhat
 
 # Executables
 *.swf
@@ -13,11 +16,11 @@ bin-release/
 *.ipa
 *.apk
 *.pyc
-Eatwhat
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 .history/
 .migrations/
-.*/__pycache__/
+*/__pycache__/
+Eatwhat

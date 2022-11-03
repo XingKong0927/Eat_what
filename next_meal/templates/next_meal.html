@@ -19,12 +19,16 @@
 			</div>
 			<div class="btn_wrap">
 				<form action="/next_meal/home" enctype='multipart/form-data' method="post">
-					<label for="dining_places">就餐地点（多选）：</label>
-					{% for dining_place in dining_place_list %}
-						<p><input type="checkbox" name="dining_places" value={{ dining_place }}>{{ dining_place }}</p>
-					{% endfor %}
-					{% csrf_token %}<!-- 这个必须添加，否则访问时报403错误 -->
-					<button class="button1">今天吃什么？</button>
+					{% if dining_place_list %}
+						<label for="dining_places">就餐地点（多选）：</label>
+							{% for dining_place in dining_place_list %}
+								<p><input type="checkbox" name="dining_places" value={{ dining_place }}>{{ dining_place }}</p>
+							{% endfor %}
+						{% csrf_token %}<!-- 这个必须添加，否则访问时报403错误 -->
+						<button class="button1">今天吃什么？</button>
+					{% else %}
+						<p>请录入美食</p>
+					{% endif %}
 				</form>
 			</div>
 		</div>
