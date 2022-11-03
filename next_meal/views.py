@@ -46,8 +46,10 @@ def next_meal(request):
         next_meal_upload_user = menus_df.loc[random_selection_index, 'upload_user']
         dining_place_list = list(menus_df0['place'])     # 就餐地点罗列
 
-        # run_log_df = dtf(run_log.objects.all().values())
-    
+        login_user = str(request.user)
+        is_login0 = request.user.is_authenticated
+        run_log.objects.create(user_mark=login_user, is_login=is_login0, have_eat=next_meal)       # 录入到数据库
+
     return render(request, "next_meal.html", locals())
 
 def enter_meal(request):
