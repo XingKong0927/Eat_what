@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from eat_what.models import menus, run_log
+
 import pandas as pd
 
 from django.contrib import messages
@@ -43,6 +44,8 @@ def next_meal(request):
         next_meal_place = menus_df.loc[random_selection_index, 'place']
         next_meal_price = menus_df.loc[random_selection_index, 'price']
         next_meal_upload_time = menus_df.loc[random_selection_index, 'upload_time']
+        next_meal_upload_time = next_meal_upload_time.strftime("%Y-%m-%d")      # '%Y %m %d %H:%M:%S'
+        print("next_meal_upload_time: ", next_meal_upload_time)
         next_meal_upload_user = menus_df.loc[random_selection_index, 'upload_user']
         dining_place_list = list(menus_df0['place'])     # 就餐地点罗列
 

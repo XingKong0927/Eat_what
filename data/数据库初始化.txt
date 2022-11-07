@@ -1,0 +1,15 @@
+"""
+数据库初始化方法: 
+打开命令行: python manage.py shell
+复制下方全部代码执行即可
+"""
+from eat_what.models import menus
+
+# 初始化美食数据表
+menus.objects.create(menu='香锅面', place='梅园', upload_user='daigua', picture='香锅面', price=10)
+menus.objects.create(menu='香锅面1', place='梅园', upload_user='daigua', picture='香锅面1', price=11)
+menus.objects.create(menu='', place='', upload_user='daigua', picture='', price=)
+
+
+
+
