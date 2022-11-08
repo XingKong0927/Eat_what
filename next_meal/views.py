@@ -29,7 +29,7 @@ def next_meal(request):
     if request.method == 'GET':
         next_meal = '猜猜今天吃什么？'
         next_meal_picture = 0
-        dining_place_list = list(menus_df0['place'])     # 就餐地点罗列
+        dining_place_list = menus_df0['place'].unique()         # 就餐地点罗列并去重
     else:
         dining_places = request.POST.getlist('dining_places')
         if dining_places:       # 选择了地点
@@ -47,7 +47,7 @@ def next_meal(request):
         next_meal_upload_time = next_meal_upload_time.strftime("%Y-%m-%d")      # '%Y %m %d %H:%M:%S'
         print("next_meal_upload_time: ", next_meal_upload_time)
         next_meal_upload_user = menus_df.loc[random_selection_index, 'upload_user']
-        dining_place_list = list(menus_df0['place'])     # 就餐地点罗列
+        dining_place_list = menus_df0['place'].unique()         # 就餐地点罗列并去重
 
         login_user = str(request.user)
         is_login0 = request.user.is_authenticated
