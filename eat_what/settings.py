@@ -25,7 +25,7 @@ SECRET_KEY = 'jtmfci#==^@0$d!+5hj@5e(^o#fy$k5foyt$npbxy^t)8plo@h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.147.17.157', '127.0.0.1']
 
 
 # Application definition
